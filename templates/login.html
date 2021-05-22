@@ -1,0 +1,58 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Log In!</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <meta charset="UTF-8">
+   <link href="http://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+</head>
+
+<body>
+><br><br><br>
+<center><font><h2><b>Welcome!!</b></h2></font></center><br>
+<section class="container-fluid">
+    <section class="row justify-content-center">
+            <section class="col-md-4 col-sm-6 col-12 ">
+                <form class="form-container" action="{% url 'index'  %}"  method="post">
+                    <div class="panel-heading text-center text-white bg-info"><font size="5rem"><b>Login </b></font></div>
+                        {% csrf_token %}
+{#                        {{ form.as_p }}#}
+                    <br>
+                            <div class="form-group">
+                                <label ><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Username" name="username"  required>
+                            </div>
+                            <div class="form-group">
+                                <label ><b>Password</b></label>
+                                <input type="password" class="form-control"  placeholder="Password"  name="password" required>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary btn-block">Login</button>
+
+                           </form>
+
+                </section>
+        </section>
+                        <center><div class="form-group text-danger">
+                            {%  for msg in messages %}
+                                <h3>{{msg}}</h3>
+                            {%  endfor %}
+                        </div></center>
+                </section>
+
+</section>
+<footer class="footersection" id="footerdiv">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300"><path fill="#212529" fill-opacity="0.7"
+  d="M0,160L0,192L205.7,192L205.7,96L411.4,96L411.4,64L617.1,64L617.1,224L822.9,224L822.9,64L1028.6,64L1028.6,64L1234.3,64L1234.3,96L1440,
+  96L1440,320L1234.3,320L1234.3,320L1028.6,320L1028.6,320L822.9,320L822.9,320L617.1,320L617.1,320L411.4,320L411.4,320L205.7,320L205.7,320L0,320L0,320Z">
+  </path>
+  <text x=400 y=270 class="h6">Copyright &copy; All Rights Reserved  |  Contact Us: +91 90000 00000 | Email us: abc@gmail.com</text>
+</svg>
+</footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>INDEX</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<br><br><br>
+<h3><a href="{%  url 'home'%}">HOME</a></h3><br><br>
+<center>
+<h2>WELCOME! {{request.user.username}}</h2>
+    <br><br>
+    <div class="form-group text-success">
+                            {%  for msg in messages %}
+                                <h6>{{msg}}</h6>
+                            {%  endfor %}
+                        </div><br><br>
+</center>
+      <div class="row text-center">
+
+    <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+             <div class="card-body">
+              <h2 class="card-title">Create Blog</h2>
+
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{%  url 'add_b'%}">Create</a>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+
+              <div class="card-body">
+              <h2 class="card-title">View Private Blogs</h2>
+
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{%  url 'private_b'%}"> View </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+
+              <div class="card-body">
+              <h2 class="card-title">Search Users</h2>
+
+            </div>
+            <div class="card-footer">
+                <form method="get" action="/search_user" class="form-inline my-2 my-lg-0">
+                  <input name="search"  id = "search" class="form-control mr-sm-2" type="search" placeholder="search" aria-label ="Search">
+                  <button class="btn btn-outline-success my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+
+              <div class="card-body">
+              <h2 class="card-title">logout</h2>
+
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'logout' %}">logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="container">
+<table class="table table-striped">
+    {% for a in blg_list %}
+    <thead>
+      <tr>
+		<th>{{ a.title }}</th>
+		<th>{{a.author.username}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{a.body}}</td>
+		<td><img src="/media/{{ a.imgfile}}" width="120"/></td>
+      </tr>
+	{% empty %}
+                            <p>No blogs to view</p>
+                    {% endfor %}
+	</tbody>
+</table>
+</div>
+
+</body>
+</html>

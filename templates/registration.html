@@ -1,0 +1,82 @@
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blog-App | Registration</title>
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+<br><br>
+<center><font><h2><b>Create an Account</b></h2></font></center><br>
+
+    <section class="container-fluid">
+    <section class="row justify-content-center">
+            <section class="col-md-4 col-sm-6 col-12 ">
+                <form class="form-container" method="post" action="/signupcheck" >
+                    <div class="panel-heading text-center text-white bg-info"><font size="5rem"><b>REGISTRATION </b></font></div>
+                        {% csrf_token %}
+                    <br>
+
+                             <div class="form-group">
+                                 <label for="UserName"><b>Name</b></label>
+                                <input class="form-control" placeholder="Username" name="UserName" id="UserName"  required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" class="form-control"  placeholder="Password" id="password" name="password" maxlength="10" size="10" required pattern=".{8,}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm_password"><b>Confirm Password</b></label>
+                                <input type="password" class="form-control" id = "confirm_password" placeholder="Enter password Again" maxlength="10" size="10" onkeyup="checkPassword()" name="confirm_password" required>
+                            </div>
+                        <table style = "border:3px solid black">
+                            <tr>
+                                <td>CAPTCHA</td>
+                                <td>
+                                    <canvas id = "myCanvas" width = "250" height="80" style = "background-color: beige;"></canvas>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class = "mb-3" name = "captcha" id = "captcha"></td>
+                            </tr>
+
+                        </table>
+<br><br>
+                    <button type="submit" name="submit" class="btn btn-primary btn-block "><b>Register</b></button>
+
+                           </form>
+                <center><div class="form-group text-danger">
+                            {%  for msg in messages %}
+                                <h3>{{msg}}</h3>
+                            {%  endfor %}
+                        </div></center>
+
+                            <div class="panel-footer">Have an account? <a href="/logincheck">Login</a></div>
+            </section>
+                    </section><br><br>
+                </section>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillStyle = "red";
+    ctx.textAlign = "center";
+    ctx.fillText("{{cap}}",canvas.width/2,canvas.height/2);
+</script>
+    <footer class="footersection" id="footerdiv">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300"><path fill="#212529" fill-opacity="0.7"
+  d="M0,160L0,192L205.7,192L205.7,96L411.4,96L411.4,64L617.1,64L617.1,224L822.9,224L822.9,64L1028.6,64L1028.6,64L1234.3,64L1234.3,96L1440,
+  96L1440,320L1234.3,320L1234.3,320L1028.6,320L1028.6,320L822.9,320L822.9,320L617.1,320L617.1,320L411.4,320L411.4,320L205.7,320L205.7,320L0,320L0,320Z">
+  </path>
+  <text x=400 y=270 class="h6">Copyright &copy; Blog-App. All Rights Reserved  |  Contact Us: +91 90000 00000 | Email us: abc@gmail.com</text>
+</svg>
+</footer>
+        </body>
+</html>
